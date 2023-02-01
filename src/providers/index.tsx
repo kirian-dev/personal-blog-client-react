@@ -2,6 +2,10 @@ import * as React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import ReduxToastr from '@/components/ui/redux-toastr';
+import { Provider } from 'react-redux';
+import { store } from '@/store/store';
 
 const ErrorFallback = () => {
 	return (
@@ -27,6 +31,8 @@ interface MainProviderProps {
 }
 
 export const MainProvider = ({ children }: MainProviderProps) => {
+	const queryClient = new QueryClient();
+
 	return (
 		<React.Suspense
 			fallback={
@@ -37,7 +43,12 @@ export const MainProvider = ({ children }: MainProviderProps) => {
 		>
 			<ErrorBoundary FallbackComponent={ErrorFallback}>
 				<HelmetProvider>
-					<Router>{children}</Router>
+					<Provider store={store}>
+						<QueryClientProvider client={queryClient}>
+							<ReduxToastr />
+							<Router>{children}</Router>
+						</QueryClientProvider>
+					</Provider>
 				</HelmetProvider>
 			</ErrorBoundary>
 		</React.Suspense>

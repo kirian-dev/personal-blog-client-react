@@ -14,7 +14,9 @@ export const Header: FC = () => {
 		<header className="flex w-full pt-14">
 			<div className="flex justify-between items-center w-full">
 				<div className="flex items-center">
-					<img src={heartImg} alt="" className="pr-4" />
+					<Link to="/">
+						<img src={heartImg} alt="" className="pr-4" />
+					</Link>
 					<h3 className="font-bold text-lg">{HEADER_NAME}</h3>
 				</div>
 

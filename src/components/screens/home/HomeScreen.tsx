@@ -9,9 +9,10 @@ import { FC } from 'react';
 import rightArrows from '@/assets/chevrons-right.svg';
 import jsIcon from '@/assets/JavaScript.svg';
 import { Projects } from './Projects';
+import { Link } from 'react-router-dom';
 export const HomeScreen: FC = () => {
 	return (
-		<main className="pt-24">
+		<main className="">
 			<div className="max-w-3xl">
 				<Heading type="large">{WELCOME_HEADING_NAME}</Heading>
 				<p className="pt-10 text-lg">{WELCOME_SUMMARY_TEXT}</p>
@@ -19,10 +20,10 @@ export const HomeScreen: FC = () => {
 			<section className="pt-24">
 				<div className="w-full flex justify-between items-center">
 					<Heading type="medium">{LATEST_ARTICLES}</Heading>
-					<button className="flex items-center">
+					<Link to="/articles" className="flex items-center">
 						{ALL_ARTICLES}
 						<img src={rightArrows} className="ml-1" />
-					</button>
+					</Link>
 				</div>
 				<ul className="pt-10 pb-24">
 					<li className="pb-6 flex items-start cursor-pointer">

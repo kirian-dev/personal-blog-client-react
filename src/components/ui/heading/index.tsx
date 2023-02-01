@@ -8,7 +8,7 @@ interface Props {
 
 export const Heading: FC<Props> = ({ type, className, children }) => {
 	if (type === 'large') {
-		return <h1 className={className}>{children}</h1>;
+		return <h1 className={`pt-24 pb-14 ${className}`}>{children}</h1>;
 	}
 
 	if (type === 'medium') {

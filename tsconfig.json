@@ -20,7 +20,12 @@
 			"@/components/*": ["components/*"],
 			"@/providers/*": ["providers/*"],
 			"@/routes/*": ["routes/*"],
-			"@/assets/*": ["assets/*"]
+			"@/assets/*": ["assets/*"],
+			"@/services/*": ["services/*"],
+			"@/api/*": ["api/*"],
+			"@/types/*": ["types/*"],
+			"@/store/*": ["store/*"],
+			"@/configs/*": ["configs/*"]
 		}
 	},
 	"include": ["src", "**/*.ts", "**/*.tsx"],
