@@ -1,13 +1,9 @@
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 
-import { HomeScreen } from '../components/screens/home';
 import { Layout } from '../components/layout';
-import { ArticlesScreen } from '@/components/screens/articles';
-import { ArticleInfo } from '@/components/screens/articleInfo';
-import { AboutScreen } from '@/components/screens/about';
-import { SignInScreen } from '@/components/screens/auth/signin';
-import { SignUpScreen } from '@/components/screens/auth/signup';
+import { adminRoutes, commonRoutes, userRoutes } from './commonRoutes';
+import { ProtectedRouteAdmin, ProtectedRouteUser } from '@/components/protected-routes';
 
 export const AppRoutes = () => {
 	const location = useLocation();
@@ -19,12 +15,27 @@ export const AppRoutes = () => {
 		<>
 			<Layout title="">
 				<Routes>
-					<Route path="/" element={<HomeScreen />} />
-					<Route path="/articles/" element={<ArticlesScreen />} />
-					<Route path="/articles/:id" element={<ArticleInfo />} />
-					<Route path="/about" element={<AboutScreen />} />
-					<Route path="/signin" element={<SignInScreen />} />
-					<Route path="/signup" element={<SignUpScreen />} />
+					{commonRoutes.map(route => (
+						<Route path={route.path} element={route.element} key={route.path} />
+					))}
+
+					{userRoutes.map(route => (
+						<Route
+							path={route.path}
+							element={<ProtectedRouteUser>{route.element}</ProtectedRouteUser>}
+							key={route.path}
+						/>
+					))}
+
+					{adminRoutes.map(route => (
+						<Route
+							path={route.path}
+							element={
+								<ProtectedRouteAdmin>{route.element}</ProtectedRouteAdmin>
+							}
+							key={route.path}
+						/>
+					))}
 				</Routes>
 			</Layout>
 		</>

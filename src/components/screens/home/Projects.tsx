@@ -17,7 +17,7 @@ export const Projects = () => {
 					{PROJECTS_NAME_FIRST}
 				</Heading>
 				<p className="font-normal pb-10">{PROJECTS_DESCRIPTION_FIRST}</p>
-				<Button className="hover:">Check me</Button>
+				<Button className="">Check me</Button>
 			</div>
 			<div className='flex gap-x-5'>
 				<div className="project flex flex-col">
@@ -25,14 +25,14 @@ export const Projects = () => {
 						{PROJECTS_NAME_FIRST}
 					</Heading>
 					<p className="font-normal pb-10">{PROJECTS_DESCRIPTION_FIRST}</p>
-					<Button className="hover:">Check me</Button>
+					<Button className="">Check me</Button>
 				</div>
 				<div className="project flex flex-col">
 					<Heading type="medium" className="font-medium pb-4">
 						{PROJECTS_NAME_FIRST}
 					</Heading>
 					<p className="font-normal pb-10">{PROJECTS_DESCRIPTION_FIRST}</p>
-					<Button className="hover:">Check me</Button>
+					<Button className="">Check me</Button>
 				</div>
 			</div>
 		</section>

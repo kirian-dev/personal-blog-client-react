@@ -37,3 +37,8 @@ export const SIGNIN_TEXT = 'Sign In';
 export const ALREADY_HAVE_ACCOUNT = 'You already have an account?';
 export const NOT_HAVE_ACCOUNT = `You don't have any account?`;
 export const SIGNUP_TEXT = 'Sign Up';
+
+
+//Admin panel page
+
+export const ADMIN_PANEL_TITLE = 'Admin Panel';

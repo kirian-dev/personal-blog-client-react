@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import {  useFormik } from 'formik';
+import { useFormik } from 'formik';
 import { Button } from '@/components/ui/button';
 import {
 	ALREADY_HAVE_ACCOUNT,
@@ -9,8 +9,7 @@ import {
 import { Field } from '@/components/ui/field';
 import { Link } from 'react-router-dom';
 import { useAction } from '@/common/hooks/useAction';
-import { AuthSchemaValidate } from '../auth.validate';
-import { Error } from '@/components/ui/error';
+import { SignUpSchemaValidate } from '../auth.validate';
 
 export const SignUpForm: FC = () => {
 	const { signUp } = useAction();
@@ -21,7 +20,7 @@ export const SignUpForm: FC = () => {
 			password: '',
 			confirmPassword: '',
 		},
-		validationSchema: AuthSchemaValidate,
+		validationSchema: SignUpSchemaValidate,
 		onSubmit: async values => {
 			signUp(values);
 			formik.resetForm();
@@ -47,8 +46,8 @@ export const SignUpForm: FC = () => {
 				value={formik.values.email}
 				outline={false}
 				onChange={formik.handleChange}
+				error={formik.errors.email}
 			/>
-			<div>{formik.errors.email}</div>
 			<Field
 				type="password"
 				name="password"
@@ -57,8 +56,8 @@ export const SignUpForm: FC = () => {
 				outline={false}
 				labelText="Password"
 				onChange={formik.handleChange}
+				error={formik.errors.password}
 			/>
-			<div>{formik.errors.password}</div>
 			<Field
 				type="password"
 				name="confirmPassword"
@@ -67,8 +66,8 @@ export const SignUpForm: FC = () => {
 				outline={false}
 				labelText="Confirm Password"
 				onChange={formik.handleChange}
+				error={formik.errors.confirmPassword}
 			/>
-			<div>{formik.errors.confirmPassword}</div>
 			<div className="flex items-center justify-between mt-10">
 				<Button type="submit" className="px-4 mr-10">
 					{SIGNUP_TEXT}

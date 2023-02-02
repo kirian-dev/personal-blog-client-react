@@ -7,12 +7,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { errorCatch } from '@/api/api.helpers';
 import { toastr } from 'react-redux-toastr';
 import { AuthService } from '@/services/auth/auth.service';
-
 import { toastError } from '@/common/helpers/toastrError';
+import { redirect } from 'react-router-dom';
 
 export const signUp = createAsyncThunk<IAuthResponse, ISignUpCreadetionals>(
 	'auth/signup',
-	async ({ confirmPassword, username, password,  email }, thunkAPI) => {
+	async ({ confirmPassword, password, username, email }, thunkAPI) => {
 		try {
 			const response = await AuthService.signUp(
 				username,
@@ -21,6 +21,7 @@ export const signUp = createAsyncThunk<IAuthResponse, ISignUpCreadetionals>(
 				password,
 			);
 			toastr.success('Registration', 'Completed successfully');
+			redirect("/")
 			return response.data;
 		} catch (error) {
 			toastError(error);
@@ -39,6 +40,7 @@ export const signIn = createAsyncThunk<IAuthResponse, ISignInCreadetionals>(
 				confirmPassword
 			);
 			toastr.success('Login', 'Completed successfully');
+			redirect("/")
 			return response.data;
 		} catch (error) {
 			toastError(error);

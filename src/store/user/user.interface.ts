@@ -3,7 +3,7 @@ import { IUser } from '@/types/user.interface';
 export interface IUserState {
 	email: string;
 	username: string;
-	isAdmin: boolean;
+	roles: string[];
 }
 
 export interface ITokens {
@@ -31,6 +31,6 @@ export interface ISignUpCreadetionals {
 
 export interface IAuthResponse extends ITokens {
 	user: IUser & {
-		isAdmin: boolean;
-	};
+		roles: string[];
+	}
 }

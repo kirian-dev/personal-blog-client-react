@@ -1,3 +1,4 @@
+
 export interface IMenu {
 	title: string;
 	link: string;
@@ -11,9 +12,5 @@ export const menuList = [
 	{
 		title: 'About',
 		link: '/about',
-	},
-	{
-		title: 'Sign in',
-		link: '/signin',
 	},
 ];
