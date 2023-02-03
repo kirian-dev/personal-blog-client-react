@@ -7,12 +7,12 @@ import { useMutation } from 'react-query';
 import { ArticleService } from '@/services/article/article.service';
 import { toastError } from '@/common/helpers/toastrError';
 import { toastr } from 'react-redux-toastr';
-import { IArticle } from '@/types/article.interface';
+import { IArticleCreate } from '@/types/article.interface';
 
 export const CreateArticleForm: FC = () => {
 	const { mutateAsync } = useMutation(
 		'create article',
-		(data: IArticle) => ArticleService.create(data),
+		(data: IArticleCreate) => ArticleService.create(data),
 		{
 			onError(error) {
 				toastError(error, 'Create article');

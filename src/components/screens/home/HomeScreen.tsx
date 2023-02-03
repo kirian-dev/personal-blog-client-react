@@ -10,7 +10,12 @@ import rightArrows from '@/assets/chevrons-right.svg';
 import jsIcon from '@/assets/JavaScript.svg';
 import { Projects } from './Projects';
 import { Link } from 'react-router-dom';
+import { useArticles } from '@/common/hooks/useArticles';
+import { formattedDate } from '@/common/helpers/formattedDate';
+import { Loader } from '@/components/ui/loader';
 export const HomeScreen: FC = () => {
+	const { data, isLoading } = useArticles();
+
 	return (
 		<main className="">
 			<div className="max-w-3xl">
@@ -25,38 +30,30 @@ export const HomeScreen: FC = () => {
 						<img src={rightArrows} className="ml-1" />
 					</Link>
 				</div>
-				<ul className="pt-10 pb-24">
-					<li className="pb-6 flex items-start cursor-pointer">
-						<img src={jsIcon} className="block mr-2 my-1" />
-						<div className="flex flex-col">
-							<p className="text-lg">
-								Reducing cognitive load by theming my tools
-							</p>
-							<span>September 08, 2019</span>
-						</div>
-					</li>
-					<li className="pb-6 flex items-start">
-						<img src={jsIcon} className="block mr-2 my-1" />
-						<div className="flex flex-col">
-							<p className="text-lg">
-								Reducing cognitive load by theming my tools
-							</p>
-							<span>September 08, 2019</span>
-						</div>
-					</li>
-					<li className="pb-6 flex items-start">
-						<img src={jsIcon} className="block mr-2 my-1" />
-						<div className="flex flex-col">
-							<p className="text-lg">
-								Reducing cognitive load by theming my tools
-							</p>
-							<span>September 08, 2019</span>
-						</div>
-					</li>
-				</ul>
+				{isLoading ? (
+					<Loader />
+				) : (
+					<ul className="pt-10 pb-24">
+						{data?.articles.slice(0, 4).map(article => (
+							<Link to={`/articles/${article._id}`} key={article._id}>
+								<li
+									key={article._id}
+									className="pb-6 flex items-start cursor-pointer"
+								>
+									<img src={jsIcon} className="block mr-2 my-1" />
+									<div className="flex flex-col">
+										<p className="text-lg">{article.title}</p>
+										<span>
+											{article.createdAt && formattedDate(article.createdAt)}
+										</span>
+									</div>
+								</li>
+							</Link>
+						))}
+					</ul>
+				)}
 			</section>
 			<Projects />
-			
 		</main>
 	);
 };
