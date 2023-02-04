@@ -14,7 +14,7 @@ import { useArticles } from '@/common/hooks/useArticles';
 import { formattedDate } from '@/common/helpers/formattedDate';
 import { Loader } from '@/components/ui/loader';
 export const HomeScreen: FC = () => {
-	const { data, isLoading } = useArticles();
+	const { articles, isLoading } = useArticles();
 
 	return (
 		<main className="">
@@ -34,22 +34,23 @@ export const HomeScreen: FC = () => {
 					<Loader />
 				) : (
 					<ul className="pt-10 pb-24">
-						{data?.articles.slice(0, 4).map(article => (
-							<Link to={`/articles/${article._id}`} key={article._id}>
-								<li
-									key={article._id}
-									className="pb-6 flex items-start cursor-pointer"
-								>
-									<img src={jsIcon} className="block mr-2 my-1" />
-									<div className="flex flex-col">
-										<p className="text-lg">{article.title}</p>
-										<span>
-											{article.createdAt && formattedDate(article.createdAt)}
-										</span>
-									</div>
-								</li>
-							</Link>
-						))}
+						{articles &&
+							articles?.slice(0, 4).map(article => (
+								<Link to={`/articles/${article._id}`} key={article._id}>
+									<li
+										key={article._id}
+										className="pb-6 flex items-start cursor-pointer"
+									>
+										<img src={jsIcon} className="block mr-2 my-1" />
+										<div className="flex flex-col">
+											<p className="text-lg">{article.title}</p>
+											<span>
+												{article.createdAt && formattedDate(article.createdAt)}
+											</span>
+										</div>
+									</li>
+								</Link>
+							))}
 					</ul>
 				)}
 			</section>

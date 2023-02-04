@@ -11,7 +11,7 @@ interface Props {
 
 export const Article: FC<Props> = ({ article }) => {
 	return (
-		<li className="pb-24 max-h-60">
+		<li className="pb-24 max-h-60 list-none li-last-child">
 			<span className="pb-4">
 				{article.createdAt && formattedDate(article.createdAt)}
 			</span>

@@ -19,6 +19,8 @@ export interface IComment {
 export interface IMeta {
 	pageCount: number;
 	total: number;
+	prevPage: number;
+	currPage: number;
 }
 
 export interface IArticlesResponse {

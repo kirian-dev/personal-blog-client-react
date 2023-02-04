@@ -1,16 +1,25 @@
 import { FC } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { useArticles } from '../../../common/hooks/useArticles';
-import { ARTICLES_TITLE } from '@/common/constants/content.constant';
 import { Heading } from '@/components/ui/heading';
 import { Search } from '@/components/ui/search';
 import { Loader } from '@/components/ui/loader';
 import { Article } from '@/components/ui/article';
+import { ARTICLES_TITLE } from '@/common/constants/content.constant';
+import { useArticles } from '@/common/hooks/useArticles';
 
 export const ArticlesScreen: FC = () => {
-	const { data, isLoading, searchTerm, handleSearch } = useArticles();
+	const {
+		articles,
+		handleSearch,
+		searchTerm,
+		hasNextPage,
+		fetchNextPage,
+		isLoading,
+	} = useArticles();
+
 	return (
-		<main className="h-full">
+		<main className="">
 			<Heading type="large" className="">
 				{ARTICLES_TITLE}
 			</Heading>
@@ -18,19 +27,16 @@ export const ArticlesScreen: FC = () => {
 			{isLoading ? (
 				<Loader />
 			) : (
-				<>
-					{data?.articles && data.articles.length > 0 ? (
-						<ul className="max-w-3xl">
-							{data.articles.map(article => (
-								<Article key={article._id} article={article} />
-							))}
-						</ul>
-					) : (
-						<div className="flex  items-center mt-10">
-							Articles not found
-						</div>
-					)}
-				</>
+				<InfiniteScroll
+					dataLength={articles ? articles?.length : 0}
+					next={fetchNextPage}
+					hasMore={hasNextPage || false}
+					loader={<Loader className='-mt-5'/>}
+				>
+					{articles?.map(article => (
+						<Article key={article._id} article={article} />
+					))}
+				</InfiniteScroll>
 			)}
 		</main>
 	);

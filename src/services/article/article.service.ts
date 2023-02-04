@@ -17,15 +17,19 @@ export const ArticleService = {
 
 		return response.data;
 	},
-	async getArticles(searchTerm: string): Promise<IArticlesResponse> {
+	async getArticles(
+		searchTerm: string,
+		limit: number,
+		page: number
+	): Promise<IArticlesResponse> {
 		const response = await axios.get<IArticlesResponse>(
 			`${API_URL}${getArticlesUrl(``)}`,
 			{
-				params: searchTerm
-					? {
-							searchTerm,
-					  }
-					: {},
+				params: {
+					searchTerm: searchTerm || '',
+					limit: limit,
+					page: page,
+				},
 			}
 		);
 		return response.data;
