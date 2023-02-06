@@ -10,7 +10,7 @@ interface LayoutProps {
 
 export const Layout: FC<LayoutProps> = ({ children, title }) => {
 	return (
-		<div className="container max-w-screen-lg m-auto px-4 xl:px-6 min-h-screen">
+		<div className="container max-w-screen-lg m-auto px-4 xl:px-6 h-full">
 			<MetaTitle title={title} />
 			<Header />
 			<div className="">{children}</div>

@@ -3,6 +3,7 @@ import {
 	IArticleCreate,
 	IArticlesResponse,
 } from '@/types/article.interface';
+import { IComment, ICommentCreate } from '@/types/comment.interface';
 import { API_URL, getArticlesUrl } from '@/configs/api.config';
 import { api } from '@/api/fetch';
 import axios from 'axios';
@@ -19,7 +20,7 @@ export const ArticleService = {
 	},
 	async getArticles(
 		searchTerm: string,
-		limit: number,
+		limit: number | undefined,
 		page: number
 	): Promise<IArticlesResponse> {
 		const response = await axios.get<IArticlesResponse>(
@@ -38,7 +39,7 @@ export const ArticleService = {
 		const response = await axios.get(`${API_URL}${getArticlesUrl(`/${id}`)}`);
 		return response.data;
 	},
-	async update(id: string, data: IArticle): Promise<IArticle> {
+	async update(id: string | undefined, data: IArticle): Promise<IArticle> {
 		const response = await api({
 			url: `${API_URL}${getArticlesUrl(`/${id}`)}`,
 			method: 'PUT',
@@ -47,9 +48,37 @@ export const ArticleService = {
 
 		return response.data;
 	},
-	async deleteA(id: string) {
+	async delete(id: string | undefined): Promise<void> {
 		const response = await api({
 			url: `${API_URL}${getArticlesUrl(`/${id}`)}`,
+			method: 'DELETE',
+		});
+		return response.data;
+	},
+	async getComments(articleId: string): Promise<IComment[]> {
+		const response = await axios.get<IComment[]>(
+			`${API_URL}${getArticlesUrl(`/${articleId}/comments`)}`
+		);
+		return response.data;
+	},
+	async createComment(
+		articleId: string,
+		data: ICommentCreate
+	): Promise<ICommentCreate> {
+		const response = await api({
+			url: `${API_URL}${getArticlesUrl(`${articleId}/comments`)}`,
+			method: 'POST',
+			body: data,
+		});
+
+		return response.data;
+	},
+	async deleteComment(
+		articleId: string | undefined,
+		commentId: string
+	): Promise<void> {
+		const response = await api({
+			url: `${API_URL}${getArticlesUrl(`/${articleId}/comments/${commentId}`)}`,
 			method: 'DELETE',
 		});
 		return response.data;

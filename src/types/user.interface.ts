@@ -6,3 +6,10 @@ export interface IUser  {
   email: string;
   username: string;
 };
+
+export interface IUpdateUser {
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
+  username?: string;
+}

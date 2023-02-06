@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { FOOTER_CONTENT } from '@/common/constants/content.constant';
 export const Footer: FC = () => {
 	return (
-		<footer className="pt-24 pb-14 max-w-3xl mx-auto">
+		<footer className="pt-24 pb-14 max-w-3xl mx-auto ">
 			<p className="text-center">{FOOTER_CONTENT}</p>
 			<div className="flex justify-center mt-5">
 				<a

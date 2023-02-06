@@ -13,8 +13,11 @@ import { Link } from 'react-router-dom';
 import { useArticles } from '@/common/hooks/useArticles';
 import { formattedDate } from '@/common/helpers/formattedDate';
 import { Loader } from '@/components/ui/loader';
+
+const PAGE_LIMIT = 5;
+
 export const HomeScreen: FC = () => {
-	const { articles, isLoading } = useArticles();
+	const { articles, isLoading } = useArticles(PAGE_LIMIT);
 
 	return (
 		<main className="">

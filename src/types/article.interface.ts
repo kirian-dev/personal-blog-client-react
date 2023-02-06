@@ -1,3 +1,5 @@
+import { IComment } from "./comment.interface";
+
 export interface IArticle {
 	_id?: string;
 	title: string;
@@ -10,10 +12,6 @@ export interface IArticle {
 export interface IArticleCreate {
 	title: string;
 	description: string;
-}
-
-export interface IComment {
-	_id: string;
 }
 
 export interface IMeta {

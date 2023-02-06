@@ -18,6 +18,8 @@ export const FOOTER_CONTENT =
 export const ARTICLES_TITLE = 'Articles';
 export const READ_MORE = 'Read more...';
 
+export const COMMENTS_TITLE = 'Comments';
+
 //About page
 
 export const ABOUT_TITLE = 'About';
@@ -38,7 +40,15 @@ export const ALREADY_HAVE_ACCOUNT = 'You already have an account?';
 export const NOT_HAVE_ACCOUNT = `You don't have any account?`;
 export const SIGNUP_TEXT = 'Sign Up';
 
-
 //Admin panel page
 
 export const ADMIN_PANEL_TITLE = 'Admin Panel';
+export const CREATE_ARTICLE_FORM = 'Create article form';
+export const UPDATE_ARTICLE_FORM = 'Update article form';
+export const DELETE_ARTICLE_FORM = 'Delete article';
+
+export const USERS_TITLE = 'Users';
+
+export const PROFILE_TITLE = 'Profile settings';
+export const PROFILE_EDIT_TITLE = 'Edit Profile';
+export const PROFILE_UPDATE_BUTTON = 'Update';

@@ -4,6 +4,7 @@ export interface IUserState {
 	email: string;
 	username: string;
 	roles: string[];
+	_id: string;
 }
 
 export interface ITokens {

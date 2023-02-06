@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom';
 import { ALL_ARTICLES } from '@/common/constants/content.constant';
 import { Heading } from '@/components/ui/heading';
 import rightArrows from '@/assets/chevrons-right.svg';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useArticleInfo } from './useArticleInfo';
 import { formattedDate } from '@/common/helpers/formattedDate';
 import { Loader } from '@/components/ui/loader';
+import { CommentsList } from './comments';
+import { useComments } from './comments/useComments';
 
 export const ArticleInfo: FC = () => {
 	const { isLoading, data } = useArticleInfo();
@@ -27,6 +29,7 @@ export const ArticleInfo: FC = () => {
 									<img src={rightArrows} className="ml-1" />
 								</Link>
 							</div>
+							<CommentsList articleId={data._id || ''} />
 						</>
 					) : null}
 				</>

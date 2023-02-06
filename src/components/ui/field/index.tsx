@@ -36,7 +36,7 @@ export const Field: FC<Props> = ({
 }) => {
 	return (
 		<>
-			<div className="mb-4">
+			<div className="mb-4 w-full">
 				<label className="block mb-2 font-medium label">{labelText}</label>
 				<input
 					type={type}
@@ -47,7 +47,7 @@ export const Field: FC<Props> = ({
 					name={name}
 					className={`w-full appearance-none border border-${
 						outline ? color : 'gray-400'
-					} rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+					} rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-green-500 ${
 						error ? 'border-danger' : ''
 					} ${success ? 'border-success' : ''} ${className}`}
 					{...rest}

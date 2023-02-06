@@ -5,24 +5,16 @@ import { useInfiniteQuery } from 'react-query';
 import { toastError } from '@/common/helpers/toastrError';
 import { IArticlesResponse, IArticle } from '@/types/article.interface';
 
-const PAGE_LIMIT = 5;
-
-export const useArticles = (): {
-	articles: IArticle[] | null | undefined;
-	handleSearch: (event: ChangeEvent<HTMLInputElement>) => void;
-	searchTerm: string;
-	hasNextPage: boolean | undefined;
-	fetchNextPage: () => void;
-	isLoading: boolean;
-} => {
+export const useArticles = (pageLimit: number | undefined) => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const debouncedSearch = useDebounce(searchTerm, 500);
 
 	const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery(
-		['articles list', debouncedSearch],
+		['articles', debouncedSearch],
 		async ({ pageParam = 1 }) =>
-			ArticleService.getArticles(debouncedSearch, PAGE_LIMIT, pageParam),
+			ArticleService.getArticles(debouncedSearch, pageLimit, pageParam),
 		{
+			cacheTime: 60000, 
 			getNextPageParam: (lastPage: IArticlesResponse) => {
 				if (
 					lastPage.meta &&
@@ -61,5 +53,6 @@ export const useArticles = (): {
 		hasNextPage,
 		fetchNextPage,
 		isLoading,
+		data
 	};
 };

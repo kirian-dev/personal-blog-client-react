@@ -31,7 +31,13 @@ interface MainProviderProps {
 }
 
 export const MainProvider = ({ children }: MainProviderProps) => {
-	const queryClient = new QueryClient();
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				refetchOnWindowFocus: false,
+			}
+		}
+	});
 
 	return (
 		<React.Suspense

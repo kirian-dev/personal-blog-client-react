@@ -8,6 +8,8 @@ import { Article } from '@/components/ui/article';
 import { ARTICLES_TITLE } from '@/common/constants/content.constant';
 import { useArticles } from '@/common/hooks/useArticles';
 
+const PAGE_LIMIT = 5;
+
 export const ArticlesScreen: FC = () => {
 	const {
 		articles,
@@ -16,7 +18,7 @@ export const ArticlesScreen: FC = () => {
 		hasNextPage,
 		fetchNextPage,
 		isLoading,
-	} = useArticles();
+	} = useArticles(PAGE_LIMIT);
 
 	return (
 		<main className="">
@@ -27,16 +29,18 @@ export const ArticlesScreen: FC = () => {
 			{isLoading ? (
 				<Loader />
 			) : (
-				<InfiniteScroll
-					dataLength={articles ? articles?.length : 0}
-					next={fetchNextPage}
-					hasMore={hasNextPage || false}
-					loader={<Loader className='-mt-5'/>}
-				>
-					{articles?.map(article => (
-						<Article key={article._id} article={article} />
-					))}
-				</InfiniteScroll>
+				<>
+					<InfiniteScroll
+						dataLength={articles ? articles?.length : 0}
+						next={fetchNextPage}
+						hasMore={hasNextPage || false}
+						loader={<Loader className="-mt-5" />}
+					>
+						{articles?.map(article => (
+							<Article key={article._id} article={article} />
+						))}
+					</InfiniteScroll>
+				</>
 			)}
 		</main>
 	);
