@@ -66,7 +66,7 @@ export const ArticleService = {
 		data: ICommentCreate
 	): Promise<ICommentCreate> {
 		const response = await api({
-			url: `${API_URL}${getArticlesUrl(`${articleId}/comments`)}`,
+			url: `${API_URL}${getArticlesUrl(`/${articleId}/comments`)}`,
 			method: 'POST',
 			body: data,
 		});

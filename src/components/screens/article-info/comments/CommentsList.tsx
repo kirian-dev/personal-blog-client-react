@@ -2,46 +2,87 @@ import { COMMENTS_TITLE } from '@/common/constants/content.constant';
 import { Heading } from '@/components/ui/heading';
 import { FC, useState } from 'react';
 import { CommentsListItem } from './CommentsListItem';
-import { IComment } from '@/types/comment.interface';
+import { IComment, ICommentCreate } from '@/types/comment.interface';
 import { useAuth } from '@/common/hooks/useAuth';
-import { useComments } from './useComments';
+import { useFormik } from 'formik';
+import { Field } from '@/components/ui/field';
+import { Loader } from '@/components/ui/loader';
+import { Button } from '@/components/ui/button';
 
-export const CommentsList: FC<{ articleId: string }> = ({ articleId }) => {
-	const [selectedCommentById, setSelectedCommentById] = useState<string>('');
+interface Props {
+	comments: IComment[];
+	deleteComment: (id: string) => void;
+	createComment: (body: ICommentCreate) => void;
+	isLoadingComments: boolean;
+}
+
+export const CommentsList: FC<Props> = ({
+	comments,
+	deleteComment,
+	createComment,
+	isLoadingComments,
+}) => {
 	const { user } = useAuth();
-	if (articleId) {
-		const { data, createComment, deleteComment } = useComments(
-			articleId,
-			selectedCommentById
-		);
-	}
+	const formik = useFormik({
+		initialValues: {
+			body: '',
+		},
+		onSubmit: async values => {
+			const data: ICommentCreate = {
+				body: values.body,
+				userId: user?._id || '',
+				username: user?.username || '',
+			};
+			await createComment(data);
+			formik.resetForm();
+		},
+	});
+
+	const deleteCommentById = async (id: string) => {
+		await deleteComment(id);
+	};
 
 	return (
-		<section>
-			<Heading type="medium" className="mt-10">
+		<section className="h-full">
+			<Heading type="medium" className="mt-10 mb-4">
 				{COMMENTS_TITLE}
 			</Heading>
-			<form onSubmit={() => console.log()} className="flex">
-				<input
-					type="text"
-					value={''}
-					className="flex-1 p-2 border border-gray-400 rounded-lg "
+			<form
+				className="flex justify-between items-center"
+				onSubmit={formik.handleSubmit}
+			>
+				<Field
+					name="body"
+					placeholder="Enter your comment"
+					value={formik.values.body}
+					outline={false}
+					onChange={formik.handleChange}
+					error={formik.errors.body}
+					className=""
+					labelText={''}
+					type={'text'}
 				/>
-				<button
+				<Button
 					type="submit"
-					className="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+					className="text-white rounded-lg mb-2 w-full ml-3 h-full"
 				>
 					Add Comment
-				</button>
+				</Button>
 			</form>
 			<div className="mt-8">
-				{!![] ? (
-					[].length &&
-					[]?.map((comment: IComment) => (
-						<CommentsListItem comment={comment} user={user} key={comment._id} />
+				{isLoadingComments ? (
+					<Loader />
+				) : !!comments && comments.length > 0 ? (
+					comments?.map((comment: IComment) => (
+						<CommentsListItem
+							comment={comment}
+							user={user}
+							key={comment._id}
+							deleteComment={deleteCommentById}
+						/>
 					))
 				) : (
-					<div className="flex justify-center items-center">
+					<div className="flex justify-center items-center 3xl">
 						Comments not found
 					</div>
 				)}

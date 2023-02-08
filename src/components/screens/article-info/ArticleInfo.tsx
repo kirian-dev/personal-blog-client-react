@@ -7,13 +7,19 @@ import { useArticleInfo } from './useArticleInfo';
 import { formattedDate } from '@/common/helpers/formattedDate';
 import { Loader } from '@/components/ui/loader';
 import { CommentsList } from './comments';
-import { useComments } from './comments/useComments';
 
 export const ArticleInfo: FC = () => {
-	const { isLoading, data } = useArticleInfo();
-
+	const {
+		isLoading,
+		data,
+		comments,
+		deleteComment,
+		createComment,
+		isLoadingComments
+	} = useArticleInfo();
+	const commentsList = comments || [];
 	return (
-		<main className="">
+		<main className="h-screen">
 			{isLoading ? (
 				<Loader />
 			) : (
@@ -29,7 +35,12 @@ export const ArticleInfo: FC = () => {
 									<img src={rightArrows} className="ml-1" />
 								</Link>
 							</div>
-							<CommentsList articleId={data._id || ''} />
+							<CommentsList
+								comments={commentsList?.comments}
+								deleteComment={deleteComment}
+								createComment={createComment}
+								isLoadingComments={isLoadingComments}
+							/>
 						</>
 					) : null}
 				</>
