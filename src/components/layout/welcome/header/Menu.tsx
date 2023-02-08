@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { menuList } from './menu-list';
 import { Link } from 'react-router-dom';
 import { MenuButton } from '@/components/ui/menu-button';
@@ -9,6 +9,7 @@ interface Props {
 }
 
 export const Menu: FC<Props> = ({ isOpenMenu, toggleMenu }) => {
+
 	return (
 		<>
 			<MenuButton toggleMenu={toggleMenu} />

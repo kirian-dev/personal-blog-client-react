@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import heartImg from '@/assets/heart.svg';
 import { HEADER_NAME, SIGNIN_TEXT } from '@/common/constants/content.constant';
@@ -6,13 +6,16 @@ import { menuList } from './menu-list';
 import { Menu } from './Menu';
 import { useAuth } from '@/common/hooks/useAuth';
 import { Logout } from './Logout';
+import { useOnClickOutside } from '@/common/hooks/useOnClickOutside';
 
 export const Header: FC = () => {
 	const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
 	const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+	const nodeDropdown = useRef(null);
 
 	const { user } = useAuth();
 
+	useOnClickOutside(nodeDropdown, () => setIsDropdownOpen(false));
 	const toggleMenu = () => {
 		setIsOpenMenu(prev => !prev);
 	};
@@ -40,15 +43,18 @@ export const Header: FC = () => {
 						{user ? (
 							<>
 								<li className="cursor-pointer" onClick={toggleDropdown}>
-									Profile
+									<a>Profile</a>
 								</li>
 								<div className="relative transition-all ease-in-out">
 									{isDropdownOpen && (
-										<ul className="absolute right-0 z-10 mt-4 bg-white text-gray-800 py-2 rounded-lg shadow-lg transition-all w-40">
+										<ul
+											className="absolute right-0 z-10 mt-4 bg-white text-gray-800 py-2 rounded-lg shadow-lg transition-all w-40"
+											ref={nodeDropdown}
+										>
 											{user.roles.includes('admin') && (
 												<li onClick={toggleDropdown}>
 													<Link
-														className="py-2 px-4 hover:bg-gray-200 block"
+														className="py-2 px-4 hover:bg-gray-200 block menu-link"
 														to="/admin/panel"
 													>
 														Admin panel
@@ -57,7 +63,7 @@ export const Header: FC = () => {
 											)}
 											<li onClick={toggleDropdown}>
 												<Link
-													className="py-2 px-4 hover:bg-gray-200 block"
+													className="py-2 px-4 hover:bg-gray-200 block menu-link"
 													to="/profile"
 												>
 													Profile settings

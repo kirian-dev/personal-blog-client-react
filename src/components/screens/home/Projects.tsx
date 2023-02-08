@@ -19,7 +19,7 @@ export const Projects = () => {
 				<p className="font-normal pb-10">{PROJECTS_DESCRIPTION_FIRST}</p>
 				<Button className="">Check me</Button>
 			</div>
-			<div className='flex gap-x-5'>
+			<div className='flex  md:flex-auto gap-x-5'>
 				<div className="project flex flex-col">
 					<Heading type="medium" className="font-medium pb-4">
 						{PROJECTS_NAME_FIRST}
