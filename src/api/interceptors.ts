@@ -1,3 +1,4 @@
+import { toastError } from '@/common/helpers/toastrError';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -43,6 +44,10 @@ instance.interceptors.response.use(
 			} catch (e) {
 				if (errorCatch(e) === 'jwt expired') removeTokensStorage();
 			}
+		}
+
+		if (error.response.status === 500) {
+			toastError(error, 'something went wrong');
 		}
 
 		throw error;

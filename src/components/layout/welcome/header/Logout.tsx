@@ -16,7 +16,7 @@ export const Logout: FC<Props> = ({ toggleDropdown }) => {
 		<li onClick={toggleDropdown}>
 			<a
 				onClick={handleLogout}
-				className="py-2 px-4 hover:bg-gray-200 block cursor-pointer menu-link"
+				className="py-2 px-4 hover:bg-gray-200 block cursor-pointer menu-link w-full"
 			>
 				Logout
 			</a>

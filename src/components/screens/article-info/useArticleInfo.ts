@@ -21,7 +21,7 @@ export const useArticleInfo = () => {
 		}
 	);
 
-	const { data: comments, isLoading: isLoadingComments } = useQuery(
+	const queryDataComments = useQuery(
 		['comments', id],
 		() => {
 			return id ? ArticleService.getComments(id) : Promise.resolve(null);
@@ -43,7 +43,7 @@ export const useArticleInfo = () => {
 		{
 			onSuccess() {
 				toastr.success('Comment created', 'created was successfully ');
-				queryData.refetch();
+				queryDataComments.refetch();
 			},
 			onError(error) {
 				toastError(error, 'Create comment');
@@ -60,6 +60,7 @@ export const useArticleInfo = () => {
 		{
 			onSuccess() {
 				toastr.success('Comment deleted', 'deleted was successfully ');
+				queryDataComments.refetch();
 			},
 			onError(error) {
 				toastError(error, 'Create comment');
@@ -70,8 +71,8 @@ export const useArticleInfo = () => {
 	return useMemo(
 		() => ({
 			...queryData,
-			comments,
-			isLoadingComments,
+			comments: queryDataComments.data,
+			isLoadingComments: queryDataComments.isLoading,
 			deleteComment,
 			createComment,
 		}),

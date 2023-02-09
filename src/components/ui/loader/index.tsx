@@ -5,7 +5,7 @@ export const Loader: FC<{ className?: string }> = ({ className }) => {
 
 	return (
 		<div
-			className={`flex container h-screen justify-center items-start max-w-screen-lg mt-24 ${className}`}
+			className={`flex container h-screen justify-start md:justify-center  items-start max-w-screen-lg mt-24 ${className}`}
 			style={{ width: '1024px' }}
 		>
 			<div className={`${circleCommonClasses} mr-1 animate-bounce`}></div>

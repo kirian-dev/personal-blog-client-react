@@ -30,7 +30,7 @@ export const CommentsListItem: FC<Props> = ({
 					</p>
 				</div>
 			</div>
-			{user?._id === comment.userId && (
+			{user && (user?._id === comment.userId) && (
 				<button
 					className="p-2 text-gray-500 hover:text-red-500 focus:outline-none"
 					onClick={() => deleteComment(comment._id)}

@@ -81,7 +81,12 @@ export const Header: FC = () => {
 						)}
 					</ul>
 				</nav>
-				<Menu toggleMenu={toggleMenu} isOpenMenu={isOpenMenu} />
+				<Menu
+					toggleMenu={toggleMenu}
+					isOpenMenu={isOpenMenu}
+					toggleDropdown={toggleDropdown}
+					user={user}
+				/>
 			</div>
 		</header>
 	);

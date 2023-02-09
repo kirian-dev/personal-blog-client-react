@@ -21,25 +21,31 @@ export const ArticlesScreen: FC = () => {
 	} = useArticles(PAGE_LIMIT);
 
 	return (
-		<main className="">
+		<main className="flex flex-col">
 			<Heading type="large" className="">
 				{ARTICLES_TITLE}
 			</Heading>
 			<Search searchTerm={searchTerm} handleSearch={handleSearch} />
 			{isLoading ? (
-				<Loader />
+				<Loader className="mx-auto" />
 			) : (
 				<>
-					<InfiniteScroll
-						dataLength={articles ? articles?.length : 0}
-						next={fetchNextPage}
-						hasMore={hasNextPage || false}
-						loader={<Loader className="-mt-5" />}
-					>
-						{articles?.map(article => (
-							<Article key={article._id} article={article} />
-						))}
-					</InfiniteScroll>
+					{!!articles.length ? (
+						<InfiniteScroll
+							dataLength={articles ? articles?.length : 0}
+							next={fetchNextPage}
+							hasMore={hasNextPage || false}
+							loader={<Loader className="mt-5" />}
+						>
+							{articles?.map(article => (
+								<Article key={article._id} article={article} />
+							))}
+						</InfiniteScroll>
+					) : (
+						<Heading type="medium" className="h-screen mt-4">
+							Articles not found
+						</Heading>
+					)}
 				</>
 			)}
 		</main>

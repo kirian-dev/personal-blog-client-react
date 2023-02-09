@@ -16,13 +16,13 @@ export const ArticlesListItem: FC<Props> = ({
 	handleClickAction,
 }) => {
 	return (
-		<tr className="text-white">
-			<td className="border px-4 py-2">{index + 1}</td>
-			<td className="border px-4 py-2">
+		<tr className="text-white text-xs md:text-lg">
+			<td className="border sm:px-4 py-2">{index + 1}</td>
+			<td className="border sm:px-4 py-2">
 				{article.createdAt && formattedDate(article.createdAt)}
 			</td>
-			<td className="border px-4 py-2">{article.title}</td>
-			<td className="border px-4 py-2">
+			<td className="border sm:px-4 py-2">{article.title}</td>
+			<td className="border sm:px-4 py-2">
 				<button
 					className="bg-green-400 text-white px-2 py-1 rounded"
 					onClick={() => {
@@ -32,7 +32,7 @@ export const ArticlesListItem: FC<Props> = ({
 					Edit
 				</button>
 				<button
-					className="bg-red-700 text-white px-2 py-1 rounded ml-2"
+					className="bg-red-700 text-white px-2 py-1 rounded mt-2 ml-1 md:mt-0 sm:ml-2"
 					onClick={() => {
 						handleClickAction('delete', article._id || '');
 					}}

@@ -19,7 +19,7 @@ export const Projects = () => {
 				<p className="font-normal pb-10">{PROJECTS_DESCRIPTION_FIRST}</p>
 				<Button className="">Check me</Button>
 			</div>
-			<div className='flex  md:flex-auto gap-x-5'>
+			<div className='flex flex-col sm:flex-row gap-x-5'>
 				<div className="project flex flex-col">
 					<Heading type="medium" className="font-medium pb-4">
 						{PROJECTS_NAME_FIRST}
@@ -27,7 +27,7 @@ export const Projects = () => {
 					<p className="font-normal pb-10">{PROJECTS_DESCRIPTION_FIRST}</p>
 					<Button className="">Check me</Button>
 				</div>
-				<div className="project flex flex-col">
+				<div className="project flex flex-col mt-4 sm:m-0">
 					<Heading type="medium" className="font-medium pb-4">
 						{PROJECTS_NAME_FIRST}
 					</Heading>

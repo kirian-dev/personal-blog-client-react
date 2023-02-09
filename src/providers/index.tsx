@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import ReduxToastr from '@/components/ui/redux-toastr';
 import { Provider } from 'react-redux';
 import { store } from '@/store/store';
+import { GlobalLoader } from '@/components/ui/global-loader';
 
 const ErrorFallback = () => {
 	return (
@@ -42,9 +43,7 @@ export const MainProvider = ({ children }: MainProviderProps) => {
 	return (
 		<React.Suspense
 			fallback={
-				<div className="flex items-center justify-center w-screen h-screen text-green-400">
-					Loading....
-				</div>
+				<GlobalLoader />
 			}
 		>
 			<ErrorBoundary FallbackComponent={ErrorFallback}>

@@ -25,11 +25,11 @@ export const UsersList: FC = () => {
 				<table className="table-auto w-full">
 					<thead>
 						<tr className="bg-gray-800 text-white">
-							<th className="px-4 py-2">#</th>
-							<th className="px-4 py-2">Created At</th>
-							<th className="px-4 py-2">Email</th>
-							<th className="px-4 py-2">Full name</th>
-							<th className="px-4 py-2">roles</th>
+							<th className="sm:px-4 py-2">#</th>
+							<th className="sm:px-4 py-2">Created At</th>
+							<th className="sm:px-4 py-2">Email</th>
+							<th className="sm:px-4 py-2">Full name</th>
+							<th className="sm:px-4 py-2">roles</th>
 						</tr>
 					</thead>
 					<tbody className="">

@@ -1,5 +1,6 @@
 import { lazyImport } from '@/common/helpers/lazyImport';
 import { HomeScreen } from '@/components/screens/home';
+import { PageNotFound } from '@/components/screens/not-found';
 
 const { ArticlesScreen } = lazyImport(
 	() => import('@/components/screens/articles'),
@@ -55,6 +56,10 @@ export const commonRoutes = [
 		path: '/about',
 		element: <AboutScreen />,
 	},
+	{
+		path: '*',
+		element: <PageNotFound />
+	}
 ];
 
 export const userRoutes = [

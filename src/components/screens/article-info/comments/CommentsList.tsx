@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import { Field } from '@/components/ui/field';
 import { Loader } from '@/components/ui/loader';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 interface Props {
 	comments: IComment[];
@@ -47,28 +48,35 @@ export const CommentsList: FC<Props> = ({
 			<Heading type="medium" className="mt-10 mb-4">
 				{COMMENTS_TITLE}
 			</Heading>
-			<form
-				className="flex justify-between items-center"
-				onSubmit={formik.handleSubmit}
-			>
-				<Field
-					name="body"
-					placeholder="Enter your comment"
-					value={formik.values.body}
-					outline={false}
-					onChange={formik.handleChange}
-					error={formik.errors.body}
-					className=""
-					labelText={''}
-					type={'text'}
-				/>
-				<Button
-					type="submit"
-					className="text-white rounded-lg mb-2 w-full ml-3 h-full"
+			{user ? (
+				<form
+					className="flex justify-between items-center"
+					onSubmit={formik.handleSubmit}
 				>
-					Add Comment
-				</Button>
-			</form>
+					<Field
+						name="body"
+						placeholder="Enter your comment"
+						value={formik.values.body}
+						outline={false}
+						onChange={formik.handleChange}
+						error={formik.errors.body}
+						className=""
+						labelText={''}
+						type={'text'}
+					/>
+					<Button
+						type="submit"
+						className="text-white rounded-lg mb-2 w-full ml-3 h-full"
+					>
+						Add Comment
+					</Button>
+				</form>
+			) : (
+				<div className="">
+					Please <Link to="/signin" className='text-green-300'>login</Link> to leave a comment
+				</div>
+			)}
+
 			<div className="mt-8">
 				{isLoadingComments ? (
 					<Loader />

@@ -49,10 +49,10 @@ export const ArticlesList: FC<{
 					<table className="table-auto w-full">
 						<thead>
 							<tr className="bg-gray-800 text-white">
-								<th className="px-4 py-2">#</th>
-								<th className="px-4 py-2">Created At</th>
-								<th className="px-4 py-2">Title</th>
-								<th className="px-4 py-2">Actions</th>
+								<th className="sm:px-4 py-2">#</th>
+								<th className="sm:px-4 py-2">Created At</th>
+								<th className="sm:px-4 py-2">Title</th>
+								<th className="sm:px-4 py-2">Actions</th>
 							</tr>
 						</thead>
 						<tbody className="">
