@@ -15,58 +15,70 @@ export const AuthService = {
 		password: string,
 		confirmPassword: string
 	) {
-		const response = await axios.post<IAuthResponse>(
-			`${API_URL}${getAuthUrl('/signup')}`,
-			{
-				username,
-				email,
-				password,
-				confirm_password: confirmPassword,
+		try {
+			const response = await axios.post<IAuthResponse>(
+				`${API_URL}${getAuthUrl('/signup')}`,
+				{
+					username,
+					email,
+					password,
+					confirm_password: confirmPassword,
+				}
+			);
+
+			if (response.data.accessToken) {
+				saveToStorage(response.data);
 			}
-		);
 
-		if (response.data.accessToken) {
-			saveToStorage(response.data);
+			return response;
+		} catch (error) {
+			console.log(error);
 		}
-
-		return response;
 	},
 	async signIn(email: string, password: string, confirmPassword: string) {
-		const response = await axios.post<IAuthResponse>(
-			`${API_URL}${getAuthUrl('/signin')}`,
-			{
-				email,
-				password,
-				confirm_password: confirmPassword,
+		try {
+			const response = await axios.post<IAuthResponse>(
+				`${API_URL}${getAuthUrl('/signin')}`,
+				{
+					email,
+					password,
+					confirm_password: confirmPassword,
+				}
+			);
+
+			if (response.data.accessToken) {
+				saveToStorage(response.data);
 			}
-		);
 
-		if (response.data.accessToken) {
-			saveToStorage(response.data);
+			return response;
+		} catch (error) {
+			console.log(error);
 		}
-
-		return response;
 	},
 	logout() {
 		removeTokensStorage();
 		localStorage.removeItem('user');
 	},
 	async getTokens() {
-		const refreshToken = Cookies.get('refreshToken');
-		const response = await axios.post<IAuthResponse>(
-			`${API_URL}${getAuthUrl('/signin/access-token')}`,
-			{
-				refreshToken,
-			},
-			{
-				headers: getContentType(),
+		try {
+			const refreshToken = Cookies.get('refreshToken');
+			const response = await axios.post<IAuthResponse>(
+				`${API_URL}${getAuthUrl('/signin/access-token')}`,
+				{
+					refreshToken,
+				},
+				{
+					headers: getContentType(),
+				}
+			);
+
+			if (response.data.accessToken) {
+				saveToStorage(response.data);
 			}
-		);
 
-		if (response.data.accessToken) {
-			saveToStorage(response.data);
+			return response;
+		} catch (error) {
+			console.error(error);
 		}
-
-		return response;
 	},
 };

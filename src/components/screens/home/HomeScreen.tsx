@@ -1,19 +1,18 @@
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { Projects } from './Projects';
+import { Heading } from '@/components/ui/heading';
+import { useArticles } from '@/common/hooks/useArticles';
+import { formattedDate } from '@/common/helpers/formattedDate';
+import { Loader } from '@/components/ui/loader';
 import {
 	ALL_ARTICLES,
 	LATEST_ARTICLES,
 	WELCOME_HEADING_NAME,
 	WELCOME_SUMMARY_TEXT,
 } from '@/common/constants/content.constant';
-import { Heading } from '@/components/ui/heading';
-import { FC } from 'react';
 import rightArrows from '@/assets/chevrons-right.svg';
 import jsIcon from '@/assets/JavaScript.svg';
-import { Projects } from './Projects';
-import { Link } from 'react-router-dom';
-import { useArticles } from '@/common/hooks/useArticles';
-import { formattedDate } from '@/common/helpers/formattedDate';
-import { Loader } from '@/components/ui/loader';
-
 const PAGE_LIMIT = 5;
 
 export const HomeScreen: FC = () => {

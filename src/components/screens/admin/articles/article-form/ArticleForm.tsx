@@ -6,7 +6,11 @@ import { Field } from '@/components/ui/field';
 import { Heading } from '@/components/ui/heading';
 import {
 	CREATE_ARTICLE_FORM,
+	CREATE_TEXT,
+	DELETE_ARTICLE_MODAL_TEXT,
+	DELETE_TEXT,
 	UPDATE_ARTICLE_FORM,
+	UPDATE_TEXT,
 } from '@/common/constants/content.constant';
 import { useEditArticle } from './useEditArticle';
 import { ArticleFormSchemaValidate } from './article-form.validate';
@@ -56,7 +60,7 @@ export const ArticleForm: FC<{
 				onSubmit={formik.handleSubmit}
 			>
 				{type === 'delete' ? (
-					<div className="mb-10">Are you sure you want to delete article?</div>
+					<div className="mb-10">{DELETE_ARTICLE_MODAL_TEXT}</div>
 				) : (
 					<>
 						<Field
@@ -89,9 +93,9 @@ export const ArticleForm: FC<{
 						Close
 					</Button>
 					<Button type="submit" className="px-4">
-						{(type === 'create' && 'Create') ||
-							(type === 'update' && 'Update') ||
-							(type === 'delete' && 'Delete')}
+						{(type === 'create' && `${CREATE_TEXT}`) ||
+							(type === 'update' && `${UPDATE_TEXT}`) ||
+							(type === 'delete' && `${DELETE_TEXT}`)}
 					</Button>
 				</div>
 			</form>

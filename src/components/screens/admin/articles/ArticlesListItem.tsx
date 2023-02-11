@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import { formattedDate } from '@/common/helpers/formattedDate';
 import { IArticle } from '@/types/article.interface';
-import { FC } from 'react';
+import { DELETE_TEXT, EDIT_TEXT } from '@/common/constants/content.constant';
 
 interface Props {
 	toggleModal: () => void;
@@ -12,7 +13,6 @@ interface Props {
 export const ArticlesListItem: FC<Props> = ({
 	article,
 	index,
-	toggleModal,
 	handleClickAction,
 }) => {
 	return (
@@ -29,7 +29,7 @@ export const ArticlesListItem: FC<Props> = ({
 						handleClickAction('update', article._id || '');
 					}}
 				>
-					Edit
+					{EDIT_TEXT}
 				</button>
 				<button
 					className="bg-red-700 text-white px-2 py-1 rounded mt-2 ml-1 md:mt-0 sm:ml-2"
@@ -37,7 +37,7 @@ export const ArticlesListItem: FC<Props> = ({
 						handleClickAction('delete', article._id || '');
 					}}
 				>
-					Delete
+					{DELETE_TEXT}
 				</button>
 			</td>
 		</tr>

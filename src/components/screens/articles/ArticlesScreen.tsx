@@ -5,7 +5,7 @@ import { Heading } from '@/components/ui/heading';
 import { Search } from '@/components/ui/search';
 import { Loader } from '@/components/ui/loader';
 import { Article } from '@/components/ui/article';
-import { ARTICLES_TITLE } from '@/common/constants/content.constant';
+import { ARTICLES_NOT_FOUND, ARTICLES_TITLE } from '@/common/constants/content.constant';
 import { useArticles } from '@/common/hooks/useArticles';
 
 const PAGE_LIMIT = 5;
@@ -43,7 +43,7 @@ export const ArticlesScreen: FC = () => {
 						</InfiniteScroll>
 					) : (
 						<Heading type="medium" className="h-screen mt-4">
-							Articles not found
+							{ARTICLES_NOT_FOUND}
 						</Heading>
 					)}
 				</>

@@ -1,12 +1,12 @@
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { ALL_ARTICLES } from '@/common/constants/content.constant';
-import { Heading } from '@/components/ui/heading';
-import rightArrows from '@/assets/chevrons-right.svg';
-import { FC, useState } from 'react';
+import { CommentsList } from './comments';
 import { useArticleInfo } from './useArticleInfo';
+import { Heading } from '@/components/ui/heading';
 import { formattedDate } from '@/common/helpers/formattedDate';
 import { Loader } from '@/components/ui/loader';
-import { CommentsList } from './comments';
+import { ALL_ARTICLES } from '@/common/constants/content.constant';
+import rightArrows from '@/assets/chevrons-right.svg';
 
 export const ArticleInfo: FC = () => {
 	const {

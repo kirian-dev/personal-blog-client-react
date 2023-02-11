@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
+import { ButtonHTMLAttributes, FC } from 'react';
 
 export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
 

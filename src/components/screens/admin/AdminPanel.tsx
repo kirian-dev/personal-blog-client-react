@@ -1,11 +1,15 @@
-import { ADMIN_PANEL_TITLE } from '@/common/constants/content.constant';
-import { Button } from '@/components/ui/button';
-import { Heading } from '@/components/ui/heading';
 import { FC, useState } from 'react';
 import { ArticlesList } from './articles';
-import { Modal } from '@/components/ui/modal';
-import { ArticleForm } from './articles/article-form';
 import { UsersList } from './users';
+import { ArticleForm } from './articles/article-form';
+import { Button } from '@/components/ui/button';
+import { Heading } from '@/components/ui/heading';
+import { Modal } from '@/components/ui/modal';
+import {
+	ADMIN_PANEL_TITLE,
+	ARTICLES_TITLE,
+	USERS_TEXT,
+} from '@/common/constants/content.constant';
 
 export const AdminPanelScreen: FC = () => {
 	const [showModal, setShowModal] = useState<boolean>(false);
@@ -59,10 +63,10 @@ export const AdminPanelScreen: FC = () => {
 					className="px-4 mr-5"
 					onClick={() => toggleShowContent('articles')}
 				>
-					Articles
+					{ARTICLES_TITLE}
 				</Button>
 				<Button className="px-4" onClick={() => toggleShowContent('users')}>
-					Users
+					{USERS_TEXT}
 				</Button>
 			</div>
 			{isShowContent.articles && (

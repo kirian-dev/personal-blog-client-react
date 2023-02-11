@@ -1,5 +1,10 @@
 export const HEADER_NAME = 'Kirill Polozenko';
 
+//Header
+export const PROFILE_TEXT = 'Profile';
+export const PROFILE_SETTINGS_TEXT = 'Profile Settings';
+export const ADMIN_PANEL_TEXT = 'Admin Panel';
+
 // Home page
 export const WELCOME_HEADING_NAME = `I’m Kirill, fullstack developer`;
 export const WELCOME_SUMMARY_TEXT =
@@ -46,9 +51,18 @@ export const ADMIN_PANEL_TITLE = 'Admin Panel';
 export const CREATE_ARTICLE_FORM = 'Create article form';
 export const UPDATE_ARTICLE_FORM = 'Update article form';
 export const DELETE_ARTICLE_FORM = 'Delete article';
-
+export const DELETE_ARTICLE_MODAL_TEXT =
+	'Are you sure you want to delete article?';
 export const USERS_TITLE = 'Users';
+export const CREATE_TEXT = 'Create';
+export const UPDATE_TEXT = 'Update';
+export const DELETE_TEXT = 'Delete';
+export const EDIT_TEXT = 'Edit';
+export const CLOSE_TEXT = 'Close';
+export const ARTICLES_NOT_FOUND = 'Articles not found';
+export const USERS_TEXT = 'Users';
 
+//Profile
 export const PROFILE_TITLE = 'Profile settings';
 export const PROFILE_EDIT_TITLE = 'Edit Profile';
 export const PROFILE_UPDATE_BUTTON = 'Update';

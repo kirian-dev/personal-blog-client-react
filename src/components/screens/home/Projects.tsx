@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import {
 	PROJECTS_TITLE,
 	PROJECTS_NAME_FIRST,
@@ -6,7 +7,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
 
-export const Projects = () => {
+export const Projects: FC = () => {
 	return (
 		<section className="w-full">
 			<Heading type="medium" className="pb-6">
@@ -19,7 +20,7 @@ export const Projects = () => {
 				<p className="font-normal pb-10">{PROJECTS_DESCRIPTION_FIRST}</p>
 				<Button className="">Check me</Button>
 			</div>
-			<div className='flex flex-col sm:flex-row gap-x-5'>
+			<div className="flex flex-col sm:flex-row gap-x-5">
 				<div className="project flex flex-col">
 					<Heading type="medium" className="font-medium pb-4">
 						{PROJECTS_NAME_FIRST}

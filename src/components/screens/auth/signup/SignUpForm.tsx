@@ -1,15 +1,15 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { SignUpSchemaValidate } from '../auth.validate';
 import { Button } from '@/components/ui/button';
+import { Field } from '@/components/ui/field';
+import { useAction } from '@/common/hooks/useAction';
 import {
 	ALREADY_HAVE_ACCOUNT,
 	SIGNIN_TEXT,
 	SIGNUP_TEXT,
 } from '@/common/constants/content.constant';
-import { Field } from '@/components/ui/field';
-import { Link } from 'react-router-dom';
-import { useAction } from '@/common/hooks/useAction';
-import { SignUpSchemaValidate } from '../auth.validate';
 
 export const SignUpForm: FC = () => {
 	const { signUp } = useAction();

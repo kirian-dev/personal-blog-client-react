@@ -1,6 +1,6 @@
+import { FC } from 'react';
 import { formattedDate } from '@/common/helpers/formattedDate';
 import { IUser } from '@/types/user.interface';
-import { FC } from 'react';
 
 interface Props {
 	user: IUser;

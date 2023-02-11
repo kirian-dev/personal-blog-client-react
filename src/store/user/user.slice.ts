@@ -1,6 +1,5 @@
-import { getLocalStorage } from './../../common/helpers/localStorage';
 import { createSlice } from '@reduxjs/toolkit';
-
+import { getLocalStorage } from './../../common/helpers/localStorage';
 import { checkAuth, signIn, logout, signUp } from './user.actions';
 import { IUserInitialState } from './user.interface';
 

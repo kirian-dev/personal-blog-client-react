@@ -1,4 +1,3 @@
-import { useArticles } from '@/common/hooks/useArticles';
 import { UseMutationOptions, useMutation } from 'react-query';
 import { toastr } from 'react-redux-toastr';
 import { toastError } from '@/common/helpers/toastrError';
@@ -43,7 +42,6 @@ export const useEditArticle = ({
 				setShowModal(false);
 				toastr.success('Update article', 'update was successful');
 			},
-			refetchQueries: ['articles'],
 		}
 	);
 	const { mutateAsync: createArticle } = useMutation(

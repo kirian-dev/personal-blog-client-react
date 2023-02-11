@@ -60,15 +60,15 @@ export const CommentsList: FC<Props> = ({
 						outline={false}
 						onChange={formik.handleChange}
 						error={formik.errors.body}
-						className=""
+						className="w-2/3 md:w-full"
 						labelText={''}
 						type={'text'}
 					/>
 					<Button
 						type="submit"
-						className="text-white rounded-lg mb-2 w-full ml-3 h-full"
+						className="text-white rounded-lg mb-2 w-1/3 md:w-full ml-3 h-full"
 					>
-						Add Comment
+						Add
 					</Button>
 				</form>
 			) : (

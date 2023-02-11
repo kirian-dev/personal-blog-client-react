@@ -1,15 +1,14 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { redirect } from 'react-router-dom';
+import { toastr } from 'react-redux-toastr';
+import { errorCatch } from '@/api/api.helpers';
+import { AuthService } from '@/services/auth/auth.service';
+import { toastError } from '@/common/helpers/toastrError';
 import {
 	IAuthResponse,
 	ISignInCreadetionals,
 	ISignUpCreadetionals,
 } from './user.interface';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { errorCatch } from '@/api/api.helpers';
-import { toastr } from 'react-redux-toastr';
-import { AuthService } from '@/services/auth/auth.service';
-import { toastError } from '@/common/helpers/toastrError';
-import { redirect } from 'react-router-dom';
-
 export const signUp = createAsyncThunk<IAuthResponse, ISignUpCreadetionals>(
 	'auth/signup',
 	async ({ confirmPassword, password, username, email }, thunkAPI) => {
@@ -18,10 +17,10 @@ export const signUp = createAsyncThunk<IAuthResponse, ISignUpCreadetionals>(
 				username,
 				email,
 				confirmPassword,
-				password,
+				password
 			);
 			toastr.success('Registration', 'Completed successfully');
-			redirect("/")
+			redirect('/');
 			return response.data;
 		} catch (error) {
 			toastError(error);
@@ -40,7 +39,7 @@ export const signIn = createAsyncThunk<IAuthResponse, ISignInCreadetionals>(
 				confirmPassword
 			);
 			toastr.success('Login', 'Completed successfully');
-			redirect("/")
+			redirect('/');
 			return response.data;
 		} catch (error) {
 			toastError(error);

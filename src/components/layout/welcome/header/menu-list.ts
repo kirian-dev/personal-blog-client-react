@@ -1,11 +1,8 @@
-import { getLocalStorage } from './../../../../common/helpers/localStorage';
-
 export interface IMenu {
 	title: string;
 	link: string;
 }
-const user = getLocalStorage('user')
-export const menuList = [
+export const menuList: IMenu[] = [
 	{
 		title: 'Articles',
 		link: '/articles',

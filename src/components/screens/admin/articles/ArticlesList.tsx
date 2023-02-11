@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ARTICLES_TITLE } from '@/common/constants/content.constant';
+import { ARTICLES_NOT_FOUND, ARTICLES_TITLE, CREATE_TEXT } from '@/common/constants/content.constant';
 import { useArticles } from '@/common/hooks/useArticles';
 import { Heading } from '@/components/ui/heading';
 import { Loader } from '@/components/ui/loader';
@@ -34,7 +34,7 @@ export const ArticlesList: FC<{
 					className="mb-10 px-4"
 					onClick={() => handleClickAction('create')}
 				>
-					Create article
+					{CREATE_TEXT}
 				</Button>
 			</div>
 			{isLoading ? (
@@ -69,7 +69,7 @@ export const ArticlesList: FC<{
 							) : (
 								<>
 									<div className="flex justify-between items-center w-full mt-4">
-										Articles not found
+										{ARTICLES_NOT_FOUND}
 									</div>
 								</>
 							)}

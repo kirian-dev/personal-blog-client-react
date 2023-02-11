@@ -1,12 +1,18 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import heartImg from '@/assets/heart.svg';
-import { HEADER_NAME, SIGNIN_TEXT } from '@/common/constants/content.constant';
+import { useOnClickOutside } from '@/common/hooks/useOnClickOutside';
+import { useAuth } from '@/common/hooks/useAuth';
 import { menuList } from './menu-list';
 import { Menu } from './Menu';
-import { useAuth } from '@/common/hooks/useAuth';
 import { Logout } from './Logout';
-import { useOnClickOutside } from '@/common/hooks/useOnClickOutside';
+import {
+	ADMIN_PANEL_TEXT,
+	HEADER_NAME,
+	PROFILE_SETTINGS_TEXT,
+	PROFILE_TEXT,
+	SIGNIN_TEXT,
+} from '@/common/constants/content.constant';
+import heartImg from '@/assets/heart.svg';
 
 export const Header: FC = () => {
 	const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
@@ -43,7 +49,7 @@ export const Header: FC = () => {
 						{user ? (
 							<>
 								<li className="cursor-pointer" onClick={toggleDropdown}>
-									<a>Profile</a>
+									<a>{PROFILE_TEXT}</a>
 								</li>
 								<div className="relative transition-all ease-in-out">
 									{isDropdownOpen && (
@@ -57,7 +63,7 @@ export const Header: FC = () => {
 														className="py-2 px-4 hover:bg-gray-200 block menu-link"
 														to="/admin/panel"
 													>
-														Admin panel
+														{ADMIN_PANEL_TEXT}
 													</Link>
 												</li>
 											)}
@@ -66,7 +72,7 @@ export const Header: FC = () => {
 													className="py-2 px-4 hover:bg-gray-200 block menu-link"
 													to="/profile"
 												>
-													Profile settings
+													{PROFILE_SETTINGS_TEXT}
 												</Link>
 											</li>
 											<Logout toggleDropdown={toggleDropdown} />

@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import { toastError } from '@/common/helpers/toastrError';
-import { ArticleService } from '@/services/article/article.service';
 import { useMutation, useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
-import { ICommentCreate } from '@/types/comment.interface';
 import { toastr } from 'react-redux-toastr';
+import { useParams } from 'react-router-dom';
+import { ArticleService } from '@/services/article/article.service';
+import { toastError } from '@/common/helpers/toastrError';
+import { ICommentCreate } from '@/types/comment.interface';
 
 export const useArticleInfo = () => {
 	const { id } = useParams();

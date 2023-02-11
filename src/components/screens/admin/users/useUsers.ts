@@ -1,7 +1,7 @@
+import { useMemo } from 'react';
+import { useQuery } from 'react-query';
 import { toastError } from '@/common/helpers/toastrError';
 import { UserService } from './../../../../services/users/user.service';
-import { useQuery, useMutation } from 'react-query';
-import { useMemo } from 'react';
 
 export const useUsers = () => {
 	const queryData = useQuery(

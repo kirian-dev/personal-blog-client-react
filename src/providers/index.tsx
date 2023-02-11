@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { ErrorBoundary } from 'react-error-boundary';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ReduxToastr from '@/components/ui/redux-toastr';
-import { Provider } from 'react-redux';
 import { store } from '@/store/store';
 import { GlobalLoader } from '@/components/ui/global-loader';
 

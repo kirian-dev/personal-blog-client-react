@@ -3,7 +3,7 @@ import { menuList } from './menu-list';
 import { Link } from 'react-router-dom';
 import { MenuButton } from '@/components/ui/menu-button';
 import { IUserState } from '@/store/user/user.interface';
-import { SIGNIN_TEXT } from '@/common/constants/content.constant';
+import { ADMIN_PANEL_TEXT, PROFILE_SETTINGS_TEXT, SIGNIN_TEXT } from '@/common/constants/content.constant';
 import { Logout } from './Logout';
 
 interface Props {
@@ -16,7 +16,6 @@ interface Props {
 export const Menu: FC<Props> = ({
 	isOpenMenu,
 	toggleMenu,
-	toggleDropdown,
 	user,
 }) => {
 	return (
@@ -41,7 +40,7 @@ export const Menu: FC<Props> = ({
 									className="py-2 px-4 hover:bg-gray-200 block menu-link"
 									to="/admin/panel"
 								>
-									Admin panel
+									{ADMIN_PANEL_TEXT}
 								</Link>
 							</li>
 						)}
@@ -50,7 +49,7 @@ export const Menu: FC<Props> = ({
 								className="py-2 px-4 hover:bg-gray-200 block menu-link"
 								to="/profile"
 							>
-								Profile settings
+								{PROFILE_SETTINGS_TEXT}
 							</Link>
 						</li>
 						<Logout toggleDropdown={toggleMenu} />
